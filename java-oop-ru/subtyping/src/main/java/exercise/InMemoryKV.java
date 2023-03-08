@@ -5,9 +5,9 @@ import java.util.HashMap;
 
 // BEGIN
 public class InMemoryKV implements KeyValueStorage {
-    private final Map<String, String> keyValue;
-    public InMemoryKV (Map<String, String> keyValue) {
-        this.keyValue = new HashMap<>(keyValue);
+    private Map<String, String> keyValue = new HashMap<>();
+    public InMemoryKV (Map<String, String> data) {
+        keyValue.putAll(data);
     }
     public void set (String key, String value) {
         keyValue.put(key, value);
