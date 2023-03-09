@@ -4,30 +4,26 @@ import exercise.connections.Connection;
 import exercise.connections.Disconnected;
 
 // BEGIN
-public class TcpConnection implements Connection {
+public class TcpConnection  {
     private Connection state;
     TcpConnection(String ip, int port) {
-         this.state = new Disconnected();
+         this.state = new Disconnected(this);
     }
-
-    @Override
     public String getCurrentState() {
-        return state.getCurrentState();
+        return state.getNameState();
     }
 
-    @Override
     public void connect() {
-        this.state = new Connected();
-        System.out.println("Error! Connection already disconnected");
+        state.connect();
     }
 
-    @Override
     public void disconnect() {
-        this.state = new Disconnected();
-        System.out.println("Error! Connection already disconnected");
+        state.disconnect();
+    }
+    public void setState(Connection state) {
+        this.state = state;
     }
 
-    @Override
     public void write(String text) {
         System.out.println("Error! You cannot send a message, because the connection is not established");
     }

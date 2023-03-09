@@ -1,12 +1,16 @@
 package exercise.connections;
 
+import exercise.TcpConnection;
+
 // BEGIN
 public class Connected implements Connection {
-    public Connected() {
+    private  TcpConnection connection;
+    public Connected(TcpConnection connection) {
+        this.connection = connection;
     }
 
     @Override
-    public String getCurrentState() {
+    public String getNameState() {
         return "connected";
     }
 
@@ -17,12 +21,11 @@ public class Connected implements Connection {
 
     @Override
     public void disconnect() {
-        new Disconnected();
+        this.connection.setState(new Disconnected(this.connection));
     }
 
     @Override
     public void write(String text) {
-
     }
 }
 // END

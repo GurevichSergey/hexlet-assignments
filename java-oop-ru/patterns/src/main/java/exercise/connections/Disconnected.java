@@ -1,19 +1,23 @@
 package exercise.connections;
 
 
+import exercise.TcpConnection;
+
 // BEGIN
 public class Disconnected implements Connection {
-    public Disconnected() {
+    private TcpConnection connection;
+    public Disconnected(TcpConnection connection) {
+        this.connection = connection;
     }
 
     @Override
-    public String getCurrentState() {
+    public String getNameState(){
         return "disconnected";
     }
 
     @Override
     public void connect() {
-        new Connected();
+       this.connection.setState(new Connected(this.connection));
     }
 
     @Override
