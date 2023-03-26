@@ -11,12 +11,13 @@
             crossorigin="anonymous">
     </head>
     <body>
-            <tr><td>${user.get("id")}</td></tr>
-            <tr><td>${user.get("firstName")}</td></tr>
-            <tr><td>${user.get("lastName")}</td></tr>
-            <tr><td>${user.get("email")}</td></tr>
+            <c:forEach var="entry" items="${user}">
+                <tr>
+                <td>${entry.getKey()}: ${entry.getValue()}<br></td>
+                </tr>
+            </c:forEach>
             <form action='/users/delete?id=${user.get("id")}' method="post">
-                <button type="submit" class="btn btn-danger">Удалить</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
     </body>
 <!-- END -->
