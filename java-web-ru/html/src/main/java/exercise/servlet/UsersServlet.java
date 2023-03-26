@@ -8,15 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import java.nio.file.Paths;
-import java.nio.file.Path;
-import java.nio.file.Files;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.commons.lang3.ArrayUtils;
@@ -75,7 +70,7 @@ public class UsersServlet extends HttpServlet {
 
             body.append("<tr>");
             body.append("<td>" + id + "</id>");
-            body.append("<td><a href=\"/user/" + id + "\">" + fullName + "</a></id>");
+            body.append("<td><a href=\"/user/" + id + "\">" + fullName + "<br></a></id>");
             body.append("</tr>");
         }
 
@@ -107,7 +102,7 @@ public class UsersServlet extends HttpServlet {
                 .orElse(null);
 
         if (users == null) {
-            response.sendError(404);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
