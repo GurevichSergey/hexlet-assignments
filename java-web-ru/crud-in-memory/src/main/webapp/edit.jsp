@@ -15,7 +15,17 @@
         <div class="container">
             <a href="/users">Все пользователи</a>
             <!-- BEGIN -->
-            
+            <form action='/users/edit?id=${user.get("id")}' method="post">
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input class="form-control" type="text" name="firstName" value='${user.getOrDefault("firstName"," ")}'>
+                    <label>Surname</label>
+                    <input class="form-control" type="text" name="lastName" value='${user.getOrDefault("lastName"," ")}'>
+                    <label>Email</label>
+                    <input class="form-control" type="text" name="email" value='${user.getOrDefault("email"," ")}'>
+                </div>
+                <button class="btn btn-primary" type="submit">Create</button>
+            </form>
             <!-- END -->
         </div>
     </body>

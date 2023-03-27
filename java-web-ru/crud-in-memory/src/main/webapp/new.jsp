@@ -15,7 +15,17 @@
         <div class="container">
             <a href="/users">Все пользователи</a>
             <!-- BEGIN -->
-            
+            <form action='/users/delete?id=${user.get("id")}' method="post">
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input class="form-control" type="text" name="firstName" value="">
+                    <label>Surname</label>
+                    <input class="form-control" type="text" name="lastName" value="">
+                    <label>Email</label>
+                    <input class="form-control" type="text" name="email" value="">
+                </div>
+                <button class="btn btn-primary" type="submit">Create</button>
+            </form>
             <!-- END -->
         </div>
     </body>
