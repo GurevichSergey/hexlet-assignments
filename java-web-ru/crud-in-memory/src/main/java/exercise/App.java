@@ -15,7 +15,7 @@ public class App {
         if (port != null) {
             return Integer.valueOf(port);
         }
-        return 8000;
+        return 5000;
     }
 
     public static Tomcat getApp(int port) {
