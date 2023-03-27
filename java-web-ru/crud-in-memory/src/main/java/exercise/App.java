@@ -18,22 +18,22 @@ public class App {
         return 5000;
     }
 
-//    public static Tomcat getApp(int port) {
-//        Tomcat tomcat = new Tomcat();
-//
-//        tomcat.setBaseDir(System.getProperty("java.io.tmpdir"));
-//        tomcat.setPort(port);
-//
-//        Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
-//
-//        tomcat.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
-//        ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
-//
+    public static Tomcat getApp(int port) {
+        Tomcat tomcat = new Tomcat();
+
+        tomcat.setBaseDir(System.getProperty("java.io.tmpdir"));
+        tomcat.setPort(port);
+
+        Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
+
+        tomcat.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
+        ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
+
 //        tomcat.addServlet(ctx, UsersServlet.class.getSimpleName(), new UsersServlet());
 //        ctx.addServletMappingDecoded("/users/*", UsersServlet.class.getSimpleName());
-//
-//        return tomcat;
-//    }
+
+        return tomcat;
+    }
 
     public static void main(String[] args) throws LifecycleException {
         Tomcat app = getApp(getPort());
