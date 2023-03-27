@@ -125,11 +125,7 @@ public class UsersServlet extends HttpServlet {
                  throws IOException, ServletException {
 
         // BEGIN
-        Map<String, String> user = new HashMap<>();
-        request.setAttribute("user", user);
-        request.setAttribute("error", "");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/new.jsp");
-        requestDispatcher.forward(request, response);
+        
         // END
     }
 
@@ -138,25 +134,7 @@ public class UsersServlet extends HttpServlet {
                  throws IOException, ServletException {
 
         // BEGIN
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String id = getNextId();
-        Map<String, String> user = new HashMap<>();
-        user.put("id", id);
-        user.put("firstName", firstName);
-        user.put("lastName", lastName);
-        user.put("email", email);
-        if (firstName.isEmpty() || lastName.isEmpty()) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/new.jsp");
-            request.setAttribute("user", user);
-            request.setAttribute("error", "Имя или фамилия не может быть пустым");
-            response.setStatus(422);
-            requestDispatcher.forward(request, response);
-            return;
-        }
-        users.add(user);
-        response.sendRedirect("/users");
+        
         // END
     }
 
@@ -172,12 +150,12 @@ public class UsersServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+
         // BEGIN
-        request.setAttribute("user", user);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit.jsp");
-        requestDispatcher.forward(request, response);
+        
         // END
     }
+
     private void updateUser(HttpServletRequest request,
                          HttpServletResponse response)
                  throws IOException, ServletException {
@@ -190,23 +168,9 @@ public class UsersServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+
         // BEGIN
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        user.put("firstName", firstName);
-        user.put("lastName", lastName);
-        user.put("email", email);
-        if (firstName.isEmpty() || lastName.isEmpty() ) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit.jsp");
-            request.setAttribute("user", user);
-            request.setAttribute("error", "Имя или фамилия не может быть пустым");
-            response.setStatus(422);
-            requestDispatcher.forward(request, response);
-            return;
-        }
-        users.add(user);
-        response.sendRedirect("/users");
+        
         // END
     }
 
