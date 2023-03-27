@@ -93,7 +93,6 @@ public class UsersServlet extends HttpServlet {
         }
     }
 
-
     private void showUsers(HttpServletRequest request,
                            HttpServletResponse response)
             throws IOException, ServletException {
