@@ -172,7 +172,6 @@ public class UsersServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-
         // BEGIN
         request.setAttribute("user", user);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit.jsp");
