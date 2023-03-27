@@ -29,8 +29,8 @@ public class App {
         tomcat.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
         ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
 
-//        tomcat.addServlet(ctx, UsersServlet.class.getSimpleName(), new UsersServlet());
-//        ctx.addServletMappingDecoded("/users/*", UsersServlet.class.getSimpleName());
+        tomcat.addServlet(ctx, UsersServlet.class.getSimpleName(), new UsersServlet());
+        ctx.addServletMappingDecoded("/users/*", UsersServlet.class.getSimpleName());
 
         return tomcat;
     }
