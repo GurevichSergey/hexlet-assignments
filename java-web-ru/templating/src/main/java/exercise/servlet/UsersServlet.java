@@ -129,7 +129,6 @@ public class UsersServlet extends HttpServlet {
         String id = getId(request);
 
         Map<String, String> user = getUserById(id);
-
         if (user == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
