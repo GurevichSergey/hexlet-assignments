@@ -179,7 +179,6 @@ public class UsersServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
         // END
     }
-
     private void updateUser(HttpServletRequest request,
                          HttpServletResponse response)
                  throws IOException, ServletException {
