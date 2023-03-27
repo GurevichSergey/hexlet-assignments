@@ -13,7 +13,7 @@ public class App {
     private static int getPort() {
         String port = System.getenv("PORT");
         if (port != null) {
-            return Integer.parseInt(port);
+            return Integer.valueOf(port);
         }
         return 5000;
     }
@@ -26,10 +26,10 @@ public class App {
 
         Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
 
-        Tomcat.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
+        tomcat.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
         ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
 
-        Tomcat.addServlet(ctx, UsersServlet.class.getSimpleName(), new UsersServlet());
+        tomcat.addServlet(ctx, UsersServlet.class.getSimpleName(), new UsersServlet());
         ctx.addServletMappingDecoded("/users/*", UsersServlet.class.getSimpleName());
 
         return tomcat;
