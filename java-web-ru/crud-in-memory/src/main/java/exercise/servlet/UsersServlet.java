@@ -191,7 +191,6 @@ public class UsersServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-
         // BEGIN
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
