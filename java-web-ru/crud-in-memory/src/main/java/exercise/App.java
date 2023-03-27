@@ -33,7 +33,7 @@ public class App {
 //        ctx.addServletMappingDecoded("/users/*", UsersServlet.class.getSimpleName());
 //
 //        return tomcat;
-    }
+//    }
 
     public static void main(String[] args) throws LifecycleException {
         Tomcat app = getApp(getPort());
