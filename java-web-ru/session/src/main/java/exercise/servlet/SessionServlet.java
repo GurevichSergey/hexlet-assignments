@@ -60,8 +60,6 @@ public class SessionServlet extends HttpServlet {
         String email = request.getParameter("email");
         Map<String, String> user = users.findByEmail(email);
         String password = request.getParameter("password");
-        Map<String, String> inputUser = new HashMap<>();
-        inputUser.put("email", email);
         if (user.get("email").equals(email) && user.get("password").equals(password)) {
             session.setAttribute("userId", user.get("id"));
             session.setAttribute("flash", "Вы успешно вошли");

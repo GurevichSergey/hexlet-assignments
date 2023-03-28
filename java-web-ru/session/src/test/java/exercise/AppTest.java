@@ -234,8 +234,8 @@ class AppTest {
         String content = EntityUtils.toString(entity);
 
         // Проверяем, что пользователь аутентифицирован по наличию кнопки Выход и отсутствию кнопки Вход
-//        assertThat(content).contains("Выход");
-//        assertThat(content).doesNotContain("Вход");
+        assertThat(content).contains("Выход");
+        assertThat(content).doesNotContain("Вход");
     }
 
     @Test
@@ -254,8 +254,8 @@ class AppTest {
         String content = EntityUtils.toString(entity);
 
         // Проверяем, что пользователь вышел по наличию кнопки Вход и отсутствию кнопки Выход
-//        assertThat(content).contains("Вход");
-//        assertThat(content).doesNotContain("Выход");
+        assertThat(content).contains("Вход");
+        assertThat(content).doesNotContain("Выход");
     }
 
     @Test
@@ -290,7 +290,7 @@ class AppTest {
 
         // Проверяем, что после входа выводится flash-сообщение "Вы успешно вошли"
         assertThat(response1.getCode()).isEqualTo(200);
-//        assertThat(content1).contains("Вы успешно вошли");
+        assertThat(content1).contains("Вы успешно вошли");
 
         HttpGet getRequest = new HttpGet(baseUrl);
         CloseableHttpResponse response2 = client.execute(getRequest);
@@ -299,7 +299,7 @@ class AppTest {
         String content2 = EntityUtils.toString(entity2);
 
         // Проверяем, что flash-сообщение выводится только один раз
-//        assertThat(content2).doesNotContain("Вы успешно вошли");
+        assertThat(content2).doesNotContain("Вы успешно вошли");
 
         HttpPost postRequest2 = new HttpPost(baseUrl + "/logout");
         CloseableHttpResponse response3 = client.execute(postRequest2);
@@ -308,7 +308,7 @@ class AppTest {
 
         // Проверяем, что после выхода выводится flash-сообщение "Вы успешно вышли"
         assertThat(response3.getCode()).isEqualTo(200);
-//        assertThat(content3).contains("Вы успешно вышли");
+        assertThat(content3).contains("Вы успешно вышли");
     }
 
     @AfterAll
