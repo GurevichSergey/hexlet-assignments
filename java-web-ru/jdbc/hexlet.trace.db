@@ -1,0 +1,12 @@
+2023-03-29 20:12:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM ARTICLES LIMIT 10 OFFSET ? ORDER[*] BY ID"
+Syntax error in SQL statement "SELECT * FROM ARTICLES LIMIT 10 OFFSET ? ORDER[*] BY ID"; SQL statement:
+SELECT * FROM articles LIMIT 10 OFFSET ? ORDER BY id [42000-200]
+2023-03-29 21:23:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "COMPANIES" не найдена
+Table "COMPANIES" not found; SQL statement:
+SELECT * FROM companies WHERE id = ? [42102-200]
+2023-03-29 21:46:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "COMPANIES" не найдена
+Table "COMPANIES" not found; SQL statement:
+SELECT * FROM companies WHERE id = ? [42102-200]
