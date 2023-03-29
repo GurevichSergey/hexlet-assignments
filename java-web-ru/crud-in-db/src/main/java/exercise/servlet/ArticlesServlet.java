@@ -249,9 +249,7 @@ public class ArticlesServlet extends HttpServlet {
 
         // BEGIN
         String query = "UPDATE articles SET title=?, body=? WHERE id=?";
-        Map<String, String> article;
         try {
-            article = getArticleById(id, connection);
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,title);
             statement.setString(2,body);
