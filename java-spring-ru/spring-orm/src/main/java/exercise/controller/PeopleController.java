@@ -34,21 +34,17 @@ public class PeopleController {
 
     // BEGIN
     @PostMapping(path = "")
-    public void postPerson(@RequestBody Map<String, String> person) {
-        Person person1 = new Person();
-        person1.setFirstName(person.get("firstName"));
-        person1.setLastName(person.get("lastName"));
-        this.personRepository.save(person1);
+    public void postPerson(@RequestBody Person person) {
+        this.personRepository.save(person);
     }
     @DeleteMapping(path = "/{id}")
     public void deletePerson(@PathVariable Long id) {
         this.personRepository.deleteById(id);
     }
     @PatchMapping(path = "{id}")
-    public void patchPerson(@PathVariable Long id, @RequestBody Map<String, String> person)  {
-        Person updatedPerson = getPerson(id);
-        updatedPerson.setLastName(person.get("lastName"));
-        updatedPerson.setFirstName(person.get("firstName"));
+    public void patchPerson(@PathVariable Long id, @RequestBody Person person)  {
+        person.setId(id);
+        this.personRepository.save(person);
     }
     // END
 }

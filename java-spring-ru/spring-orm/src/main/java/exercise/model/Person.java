@@ -9,20 +9,16 @@ import javax.persistence.Id;
 
 // BEGIN
 @Entity
+@Getter
+@Setter
 // END
 public class Person {
-
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     // BEGIN
-    @Getter
-    @Setter
     private String firstName;
-    @Getter
-    @Setter
     private String lastName;
     // END
 }
