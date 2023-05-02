@@ -36,9 +36,9 @@ public class CourseController {
         Course course = courseRepository.findById(id);
         List<Course> courses = new ArrayList<>();
         if (course.getPath() != null) {
-            String[] parantCourses = course.getPath().split("\\.");
-            courses = Arrays.stream(parantCourses)
-                    .map(values -> courseRepository.findById(Long.parseLong(values)))
+            String[] parentIds= course.getPath().split("\\.");
+            courses = Arrays.stream(parentIds)
+                    .map(value -> courseRepository.findById(Long.parseLong(value)))
                     .collect(Collectors.toList());
             return courses;
         }
