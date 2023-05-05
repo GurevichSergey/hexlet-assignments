@@ -35,14 +35,10 @@ public class CityController {
     @GetMapping(path = "/search")
     public List<Map<String, String>> getCitiesStartWith(
             @RequestParam(value = "name", required = false) String name) {
-        List<Map<String, String>> result = new ArrayList<>();
-        if (name == null) {
-            var sortedCities = cityRepository.findAllByOrderByName();
-            return sortedCities.stream()
-                    .map(city -> weatherService.getWeather(city))
-                    .collect(Collectors.toList());
-        }
-        var cities = cityRepository.findByNameStartingWithIgnoreCase(name);
+
+        List<City> cities = name == null ? cityRepository.findAllByOrderByName() :
+                cityRepository.findByNameStartingWithIgnoreCase(name);
+
         return cities.stream()
                 .map(city -> weatherService.getWeather(city))
                 .filter(city -> city.containsKey("name") && city.containsKey("temperature"))
