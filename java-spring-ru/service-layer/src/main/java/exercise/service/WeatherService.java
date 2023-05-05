@@ -1,5 +1,6 @@
 package exercise.service;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import exercise.HttpClient;
 
 import java.io.IOException;
@@ -35,8 +36,8 @@ public class WeatherService {
         Map<String, String> weather = new HashMap<>();
         try {
             weather = objectMapper.readValue(client.get(url), Map.class);
-        } catch (IOException e) {
-            return weather;
+        } catch (Exception e) {
+            throw  new RuntimeException();
         }
         return weather;
     }
