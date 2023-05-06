@@ -18,8 +18,8 @@ public class WelcomeController {
     @GetMapping(path = "/daytime")
     public String root() {
         var timOfDay = daytime.getName();
-        var re = meal.getMealForDaytime(timOfDay);
-        return "It is " + timOfDay + " now. Enjoy your " + re;
+        var mealName = meal.getMealForDaytime(timOfDay);
+        return "It is " + timOfDay + " now. Enjoy your " + mealName;
     }
 }
 // END
