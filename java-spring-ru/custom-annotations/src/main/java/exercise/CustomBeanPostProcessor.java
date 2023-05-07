@@ -34,19 +34,12 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
                     bean.getClass().getClassLoader(),
                     bean.getClass().getInterfaces(),
                     (proxy, method, args) -> {
-                        if (method.getName().equals("sum") || method.getName().equals("mult")) {
                             String message = "Was called method: " + method.getName() + "() with arguments: " + Arrays.toString(args);
                             if (expectedBean.get(beanName).equals("info")) {
-
                                 LOGGER.info(message);
                             } else {
                                 LOGGER.debug(message);
                             }
-                        } else {
-                            throw new UnsupportedOperationException(
-                                    "Unsupported operation: " + method.getName()
-                            );
-                        }
                         return method.invoke(bean, args);
                     }
             );
