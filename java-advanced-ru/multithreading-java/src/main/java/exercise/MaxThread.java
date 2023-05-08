@@ -15,11 +15,13 @@ public class MaxThread extends Thread {
 
     @Override
     public void run() {
-        getMaxNumber();
+        maxNumber = Arrays.stream(numbers)
+                .max()
+                .orElse(0);
     }
 
     public int getMaxNumber() {
-        return maxNumber = Arrays.stream(numbers).max().orElse(0);
+        return maxNumber;
     }
 }
 // END

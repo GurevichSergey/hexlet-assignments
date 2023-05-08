@@ -13,11 +13,13 @@ public class MinThread extends Thread {
 
     @Override
     public void  run() {
-        getMinNumber();
+        minNumber = Arrays.stream(numbers)
+                .min()
+                .orElse(1);
     }
 
     public int getMinNumber() {
-        return minNumber = Arrays.stream(numbers).min().orElse(1);
+        return this.minNumber;
     }
 }
 // END
