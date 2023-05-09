@@ -19,11 +19,7 @@ class App {
             String  writePathFile) {
 
         CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
+
             Path path = Paths.get(pathFirstFile).toAbsolutePath().normalize();
             try {
                 return Files.readString(path);
@@ -34,11 +30,7 @@ class App {
 
 
         CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
+
             Path path = Paths.get(pathSecondFile).toAbsolutePath().normalize();
             try {
                 return Files.readString(path);
@@ -50,9 +42,9 @@ class App {
         CompletableFuture<String> futureResult = future1.thenCombine(future2, (file1, file2) -> {
             Path path = Paths.get(writePathFile).toAbsolutePath().normalize();
             var file = file1 + file2;
+
             try {
-                Files.writeString(path, file, StandardCharsets.UTF_8, StandardOpenOption.CREATE,
-                        StandardOpenOption.APPEND);
+                Files.writeString(path, file,StandardOpenOption.CREATE);
             } catch (IOException e) {
                 throw new IllegalStateException(e);
             }
@@ -68,9 +60,10 @@ class App {
 
     public static void main(String[] args) throws Exception {
         // BEGIN
-        unionFiles("src/main/resources/file1.txt",
+        CompletableFuture<String> result = unionFiles("src/main/resources/file1.txt",
                 "src/main/resources/file2.txt",
-                "src/resources/file3.txt");
+                "src/main/resources/file3.txt");
+        result.get();
         // END
     }
 }
